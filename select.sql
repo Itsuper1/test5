@@ -1,0 +1,21 @@
+USE json
+SELECT *FROM t_employees;
+SELECT *FROM t_dept;
+SELECT ename FROM t_employees WHERE deptno=30;
+SELECT ename,empno,deptno FROM t_employees WHERE job='经理';
+SELECT ename FROM t_employees WHERE comm>sal;
+SELECT ename FROM t_employees WHERE comm>(sal*60/100);
+SELECT *FROM t_employees WHERE deptno=10 AND job='经理' OR deptno=20 AND job='分析员';
+SELECT *FROM t_employees WHERE deptno=10 AND job='经理' OR deptno=20 AND job='分析员' OR sal>=3000 AND job NOT IN ('经理','武装上将');
+SELECT ename FROM t_employees WHERE comm=NULL OR comm<1000;
+SELECT ename FROM t_employees WHERE ename LIKE'___';
+SELECT ename FROM t_employees WHERE hiredate LIKE'20%';
+SELECT *FROM t_employees ORDER BY empno ASC;
+SELECT *FROM t_employees ORDER BY sal DESC, hiredate ASC;
+SELECT AVG(sal) FROM t_employees WHERE deptno=10;
+SELECT AVG(sal) FROM t_employees WHERE deptno=20;
+SELECT AVG(sal) FROM t_employees WHERE deptno=30;
+SELECT AVG(sal) FROM t_employees WHERE deptno=40; 
+SELECT deptno,COUNT(*) FROM t_employees GROUP BY deptno;
+SELECT deptno,AVG(sal) FROM t_employees GROUP BY deptno;
+SELECT MAX(sal),MIN(sal),COUNT(*) FROM t_employees GROUP BY job;
